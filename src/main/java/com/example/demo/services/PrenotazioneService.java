@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.Prenotazione;
+import com.example.demo.entities.Utente;
 import com.example.demo.exceptions.ValidationException;
 import com.example.demo.repositories.PrenotazioneRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,14 @@ public class PrenotazioneService {
     public void savePrenotazione(Prenotazione newPrenotazione) {
         if (newPrenotazione == null){
             throw new ValidationException("prenotazione errata");
+        }
+
+        if (newPrenotazione.getUtente() == null){
+            throw new ValidationException("utente mancato");
+        }
+
+        if (newPrenotazione.getPostazione() == null){
+            throw new ValidationException("Postazione mancante");
         }
         prenotazioneRepository.save(newPrenotazione);
         log.info("Prenotazione salvata:", newPrenotazione);
