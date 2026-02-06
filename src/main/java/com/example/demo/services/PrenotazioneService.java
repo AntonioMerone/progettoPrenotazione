@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.Prenotazione;
+import com.example.demo.exceptions.ValidationException;
 import com.example.demo.repositories.PrenotazioneRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,12 @@ public class PrenotazioneService {
     }
 
     public void savePrenotazione(Prenotazione newPrenotazione) {
+        if (newPrenotazione == null){
+            throw new ValidationException("prenotazione errata");
+        }
         prenotazioneRepository.save(newPrenotazione);
         log.info("Prenotazione salvata:", newPrenotazione);
     }
+
 }
 
