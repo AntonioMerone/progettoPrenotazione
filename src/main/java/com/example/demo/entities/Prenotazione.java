@@ -10,7 +10,6 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 //faccio la stessa cosa per evitare i loop, escludo utente e postazione nella stampa
 @ToString(exclude = {"utente", "postazione"})
 public class Prenotazione {
@@ -29,4 +28,10 @@ public class Prenotazione {
 
     @Column(nullable = false)
     private LocalDate data;
+
+    public Prenotazione (Utente utente, Postazione postazione, LocalDate data) {
+        this.utente = utente;
+        this.postazione = postazione;
+        this.data = data;
+}
 }

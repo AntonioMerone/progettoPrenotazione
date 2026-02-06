@@ -7,5 +7,5 @@ import com.example.demo.entities.Postazione;
 import java.util.List;
 
 public interface PostazioneRepository extends JpaRepository<Postazione, String> {
-    List<Postazione> findByTipoAndEdificio_Citta(TipoPostazione tipo, String citta);
+    List<Postazione> findByTipoAndEdificioCitta(TipoPostazione tipo, String citta);
 }

@@ -13,12 +13,11 @@ import java.util.List;
 @Slf4j
 public class PostazioneService {
     private final PostazioneRepository postazioneRepository;
-
+@Autowired
     public PostazioneService(PostazioneRepository postazioneRepository) {
         this.postazioneRepository = postazioneRepository;
     }
 
-    @Autowired
 
  public void savePostazione(Postazione newPostazione){
         postazioneRepository.save(newPostazione);
@@ -27,7 +26,7 @@ public class PostazioneService {
 
     public List<Postazione> cercaPostazioni(TipoPostazione tipo, String citta) {
         log.info("ricerca posto", tipo,citta);
-        return postazioneRepository.findByTipoAndEdificio_Citta(tipo,citta);
+        return postazioneRepository.findByTipoAndEdificioCitta(tipo,citta);
     }
 
 }
