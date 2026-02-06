@@ -1,4 +1,13 @@
 package com.example.demo.repositories;
 
-public interface PrenotazioneRepository {
+import com.example.demo.entities.Prenotazione;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.time.LocalDate;
+
+public interface PrenotazioneRepository extends JpaRepository<Prenotazione, Long> {
+
+    boolean existsByPostazione_CodiceAndData(String codicePostazione, LocalDate data);
+
+    boolean existsByUtente_UsernameAndData(String username, LocalDate data);
 }
